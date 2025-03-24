@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
+import 'homepage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -166,6 +167,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                         const SnackBar(content: Text('Processing Data')),
                       );
                     }
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
                   },
                   child: const Text('Submit'),
                 ),
