@@ -57,7 +57,6 @@ class MyCustomFormState extends State<MyCustomForm> {
       });
     }
   }
-
   final _textControllerName = TextEditingController();
   final _textControllerEmail = TextEditingController();
   final _textControllerDateOfBirth = TextEditingController();
@@ -77,7 +76,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: Column (
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                      SizedBox(
                   height: 40.0,
                   child: Text(
                     "Info Needed"
@@ -91,6 +90,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     }
                     return null;
                   },
+                  controller: _textControllerName,
                   decoration: const InputDecoration(
                     hintText: "Name",
                     border: OutlineInputBorder(),
@@ -105,6 +105,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     }
                     return null;
                   },
+                  controller: _textControllerEmail,
                   decoration: const InputDecoration(
                     hintText: "Email",
                     border: OutlineInputBorder(),
@@ -138,12 +139,14 @@ class MyCustomFormState extends State<MyCustomForm> {
                     }
                     return null;
                   },
+                  controller: _textControllerPassword,
                   decoration: const InputDecoration(
                     hintText: "Password",
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 10),                ElevatedButton(
+                SizedBox(height: 10),           
+                ElevatedButton(
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
