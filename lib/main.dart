@@ -49,7 +49,7 @@ class MyCustomFormState extends State<MyCustomForm> {
       context: context,
       initialDate: _date = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
       firstDate: DateTime(1900, 1, 1),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now(),
     );
     if (picked != null && picked != _date) {
       setState(() {
@@ -100,8 +100,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                 TextFormField(
                   // The validator receives the text that the user has entered.
                   validator: (value) {
+                    RegExp emailRegex = RegExp(
+                      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                    );
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
+                    } else if (!emailRegex.hasMatch(value)) {
+                      return 'Please enter a valid email';
                     }
                     return null;
                   },
@@ -134,8 +139,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                 TextFormField(
                   // The validator receives the text that the user has entered.
                   validator: (value) {
+                    RegExp passwordRegex = RegExp(
+                      r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$'
+                    );
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
+                    } else if (!passwordRegex.hasMatch(value)) {
+                      return 'Please enter password with more than 6 characters, alphabet, number and special character and atleast 6 characters';
                     }
                     return null;
                   },
