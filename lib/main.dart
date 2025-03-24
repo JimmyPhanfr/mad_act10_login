@@ -78,6 +78,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           Padding(
             padding: EdgeInsets.all(16.0), // Adds 16 pixels of padding on all sides
             child: Column (
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Enter Date of Birth',
