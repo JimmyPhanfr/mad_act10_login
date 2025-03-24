@@ -53,7 +53,7 @@ class MyCustomFormState extends State<MyCustomForm> {
     );
     if (picked != null && picked != _date) {
       setState(() {
-        _date = DateTime(picked.year, picked.month, picked.day); 
+        _textControllerDateOfBirth.text = DateFormat('MM-dd-yyyy').format(picked);
       });
     }
   }
@@ -112,17 +112,22 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ),
                 SizedBox(height: 15.0),
                 TextFormField(
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    hintText: "Date of Birth",
-                    border: OutlineInputBorder(),
-                  ),
+                    controller: _textControllerDateOfBirth,
+                    readOnly: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please select a date';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Date of Birth",
+                      border: OutlineInputBorder(),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.calendar_today),
+                        onPressed: () => _selectDate(context),
+                      ),
+                    ),
                 ),
                 SizedBox(height: 15.0),
                 TextFormField(
@@ -138,15 +143,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                Text(
-                  'Enter Date of Birth',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                ElevatedButton(
-                  onPressed: () => _selectDate(context),
-                  child: Text('Select Date of Birth: ${DateFormat('MM-dd-yyyy').format(_date)}'),
-                ),
-                ElevatedButton(
+                SizedBox(height: 10),                ElevatedButton(
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
