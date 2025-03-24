@@ -57,7 +57,6 @@ class MyCustomFormState extends State<MyCustomForm> {
       });
     }
   }
-
   final _textControllerName = TextEditingController();
   final _textControllerEmail = TextEditingController();
   final _textControllerDateOfBirth = TextEditingController();
@@ -72,72 +71,77 @@ class MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 40.0,
+            child: Text(
+              "Info Needed"
+            ),
+          ),
+          TextFormField(
+            // The validator receives the text that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            controller: _textControllerName,
+            decoration: const InputDecoration(
+              hintText: "Name",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 15.0),
+          TextFormField(
+            // The validator receives the text that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            controller: _textControllerEmail,
+            decoration: const InputDecoration(
+              hintText: "Email",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 15.0),
+          TextFormField(
+            // The validator receives the text that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            controller: _textControllerDateOfBirth,
+            decoration: const InputDecoration(
+              hintText: "Date of Birth",
+              border: OutlineInputBorder(),
+            ),
+            
+          ),
+          SizedBox(height: 15.0),
+          TextFormField(
+            // The validator receives the text that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            controller: _textControllerPassword,
+            decoration: const InputDecoration(
+              hintText: "Password",
+              border: OutlineInputBorder(),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.all(16.0), // Adds 16 pixels of padding on all sides
             child: Column (
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 40.0,
-                  child: Text(
-                    "Info Needed"
-                  ),
-                ),
-                TextFormField(
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    hintText: "Name",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 15.0),
-                TextFormField(
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    hintText: "Email",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 15.0),
-                TextFormField(
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    hintText: "Date of Birth",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 15.0),
-                TextFormField(
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    hintText: "Password",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
                 Text(
                   'Enter Date of Birth',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
