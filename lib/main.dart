@@ -63,6 +63,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   final _textControllerDateOfBirth = TextEditingController();
   final _textControllerPassword = TextEditingController();
 
+  bool _isPasswordObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -146,14 +147,23 @@ class MyCustomFormState extends State<MyCustomForm> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter some text';
                     } else if (!passwordRegex.hasMatch(value)) {
-                      return 'Please enter password with more than 6 characters, alphabet, number and special character and atleast 6 characters';
+                      return 'Password must include:\n at least 6 characters,\n a letter,\n a number,\n and a special character';
                     }
                     return null;
                   },
                   controller: _textControllerPassword,
-                  decoration: const InputDecoration(
+                  obscureText: _isPasswordObscure,
+                  decoration: InputDecoration(
                     hintText: "Password",
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(_isPasswordObscure ? Icons.visibility : Icons.visibility_off),
+                      onPressed: () { 
+                        setState(() {
+                          _isPasswordObscure = !_isPasswordObscure;
+                        });
+                      }, 
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),           
@@ -166,11 +176,11 @@ class MyCustomFormState extends State<MyCustomForm> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Processing Data')),
                       );
-                    }
-                    Navigator.pushReplacement(
+                      Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                      );
+                    }
                   },
                   child: const Text('Submit'),
                 ),

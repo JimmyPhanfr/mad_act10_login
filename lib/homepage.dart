@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mad_act_10_login_partner/main.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,6 +32,15 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyApp()),
+                  );
+                },
+                child: Text("Return"),
+              ),
             ],
           ),
         ),
